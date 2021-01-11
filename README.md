@@ -6,13 +6,15 @@
 
 心血来潮之下，准备把这道作业题再重新写一遍，作为我学习编译器的 "Hello world" 吧（先占上坑
 
+## EBNF
+
 ```EBNF
-stmt ::= add_expr;
+stmt     ::= add_expr;
 add_expr ::= mul_expr {opt1 mul_expr};
 mul_expr ::= item {opt2 item};
-item ::= "(" add_expr ")" | number;
-number ::= {digit} ["."] {digit};
-opt1 ::= "+" | "-";
-opt2 ::= "*" | "/";
-digit ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+item     ::= "(" add_expr ")" | number;
+number   ::= {digit} ["."] {digit};
+opt1     ::= "+" | "-";
+opt2     ::= "*" | "/";
+digit    ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 ```
