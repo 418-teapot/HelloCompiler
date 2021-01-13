@@ -4,7 +4,8 @@
 
 double num_val;
 
-static std::map<const char, enum Token> mapToken {
+// TODO: change static type to const
+static std::map<const char, enum kToken> kMapToken {
   {'(', kTokenLeftParn},
   {')', kTokenRightParn},
   {'+', kTokenPlus},
@@ -13,8 +14,8 @@ static std::map<const char, enum Token> mapToken {
   {'/', kTokenDiv}
 };
 
-static enum Token FindToken(const char query_char) {
-  return mapToken[query_char];
+static enum kToken FindToken(const char query_char) {
+  return kMapToken[query_char];
 }
 
 int GetToken() {

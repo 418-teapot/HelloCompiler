@@ -3,7 +3,7 @@
 
 #include <map>
 
-enum Token {
+enum kToken {
   kTokenEof,
   kTokenLeftParn,
   kTokenRightParn,
