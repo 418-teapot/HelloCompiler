@@ -1,5 +1,6 @@
 #include "lexer.h"
 #include <stdlib.h>
+#include <map>
 #include <string>
 
 double num_val;
