@@ -1,18 +1,17 @@
 #include "lexer.h"
-#include <stdio.h>
-
-static int cur_tok;
-static int GetNextToken() {
-  return cur_tok = GetToken();
-}
+#include <cstdio>
+#include <vector>
 
 int main(int argc, char *argv[]) {
   fprintf(stderr, "ready> ");
-  GetNextToken();
-  while (cur_tok != int(kTokenEof)) {
-    printf("%d\t", cur_tok);
-    GetNextToken();
+  enum kToken cur_tok = GetToken();
+  std::vector<enum kToken> tok_list;
+  while (cur_tok != kTokenEof) {
+    tok_list.push_back(cur_tok);
+    cur_tok = GetToken();
   }
-  printf("%d\n", cur_tok);
+  tok_list.push_back(cur_tok);
+  for(auto it = tok_list.begin(); it != tok_list.end(); ++it)
+    printf("%d ", *it);
   return 0;
 }

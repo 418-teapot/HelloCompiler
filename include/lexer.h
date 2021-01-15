@@ -15,6 +15,6 @@ enum kToken {
 
 extern double num_val;
 
-int GetToken();
+enum kToken GetToken();
 
 #endif

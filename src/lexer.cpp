@@ -1,5 +1,5 @@
 #include "lexer.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include <map>
 #include <string>
 
@@ -19,7 +19,7 @@ static enum kToken FindToken(const char query_char) {
   return kMapToken[query_char];
 }
 
-int GetToken() {
+enum kToken GetToken() {
   static int last_char = ' ';
 
   while (last_char == ' ' || last_char == '\t')
