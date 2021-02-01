@@ -1,7 +1,7 @@
 #ifndef LEXER_H_
 #define LEXER_H_
 
-enum kToken {
+enum kTokenType {
   kTokenEof,
   kTokenLeftParn,
   kTokenRightParn,
@@ -14,10 +14,10 @@ enum kToken {
 };
 
 typedef struct {
-  kToken type;
+  kTokenType type;
   double val;
-} token;
+} Token;
 
-token GetToken();
+Token GetToken();
 
 #endif

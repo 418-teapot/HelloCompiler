@@ -4,7 +4,7 @@
 #include <string>
 
 // TODO: change static type to const
-static std::map<const char, enum kToken> kMapToken {
+static std::map<const char, enum kTokenType> kMapToken {
   {'(', kTokenLeftParn},
   {')', kTokenRightParn},
   {'+', kTokenPlus},
@@ -13,12 +13,12 @@ static std::map<const char, enum kToken> kMapToken {
   {'/', kTokenDiv}
 };
 
-static enum kToken FindToken(const char query_char) {
+static enum kTokenType FindToken(const char query_char) {
   return kMapToken[query_char];
 }
 
-token GetToken() {
-  token mtoken;
+Token GetToken() {
+  Token mtoken;
   static int last_char = ' ';
 
   while (last_char == ' ' || last_char == '\t')
