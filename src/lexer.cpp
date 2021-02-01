@@ -3,8 +3,6 @@
 #include <map>
 #include <string>
 
-double num_val;
-
 // TODO: change static type to const
 static std::map<const char, enum kToken> kMapToken {
   {'(', kTokenLeftParn},
@@ -19,7 +17,8 @@ static enum kToken FindToken(const char query_char) {
   return kMapToken[query_char];
 }
 
-enum kToken GetToken() {
+token GetToken() {
+  token mtoken;
   static int last_char = ' ';
 
   while (last_char == ' ' || last_char == '\t')
@@ -27,12 +26,15 @@ enum kToken GetToken() {
 
   if (isdigit(last_char) || last_char == '.') {
     std::string num_str;
+    double num_val;
     do {
       num_str += last_char;
       last_char = getchar();
     } while (isdigit(last_char) || last_char == '.');
     num_val = strtod(num_str.c_str(), nullptr);
-    return kTokenNumber;
+    mtoken.type = kTokenNumber;
+    mtoken.val = num_val;    
+    return mtoken;
   }
 
   switch (last_char) {
@@ -44,14 +46,23 @@ enum kToken GetToken() {
     case '/': {
       int this_char = last_char;
       last_char = getchar();
-      return FindToken(this_char);
+      mtoken.type = FindToken(this_char);
+      mtoken.val = this_char;
+      return mtoken;
     }
     case '\n':
     case '\r':
-    case EOF: return kTokenEof;
+    case EOF: {
+      mtoken.type = kTokenEof;
+      mtoken.val = last_char;
+      return mtoken;
+    }
     default: break;
   };
 
+  int this_char = last_char;
   last_char = getchar();
-  return kTokenIllegal;
+  mtoken.type = kTokenIllegal;
+  mtoken.val = this_char;
+  return mtoken;
 }

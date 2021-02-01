@@ -13,8 +13,11 @@ enum kToken {
   kTokenIllegal
 };
 
-extern double num_val;
+typedef struct {
+  kToken type;
+  double val;
+} token;
 
-enum kToken GetToken();
+token GetToken();
 
 #endif
