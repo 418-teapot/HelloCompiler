@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(SOURCES
     src/main.cpp
     src/lexer.cpp
+    src/parser.cpp
 )
 
 add_executable(HelloCompiler ${SOURCES})

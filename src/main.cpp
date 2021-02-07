@@ -1,12 +1,13 @@
-#include "lexer.h"
+#include "parser.h"
 #include <cstdio>
 
 int main(int argc, char *argv[]) {
   fprintf(stderr, "ready> ");
-  enum kTokenType cur_tok = GetToken().type;
-  while (cur_tok != kTokenEof) {
-    cur_tok = GetToken().type;
-    printf("%d ", cur_tok);
+  try {
+    double val = ParseStmt();
+    printf("%f\n", val);
+  } catch(const char* msg) {
+    fprintf(stderr, msg);
   }
   return 0;
 }

@@ -3,28 +3,15 @@
 
 #include "lexer.h"
 
-class BaseNode {
- public:
-  enum kToken tok;
-  BaseNode *prev;
-  BaseNode *next;
-};
+typedef struct {
+  double val;
+  Token last_token;
+  Token this_token;
+} PRes;
 
-class NumNode : BaseNode {
- public:
-  double num_val;
-};
-
-class ItemNode : BaseNode {
-
-};
-
-class AddNode : BaseNode {
-
-};
-
-class MulNode : BaseNode {
-
-};
+double ParseStmt();
+PRes ParseAdd();
+PRes ParseMul();
+PRes ParseItem();
 
 #endif
